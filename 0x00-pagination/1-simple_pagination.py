@@ -38,11 +38,10 @@ class Server:
         assert page > 0, "Page must be greater than 0"
         assert page_size > 0, "Page size must be greater than 0"
 
+        data = self.dataset()
         start_index, end_index = index_range(page, page_size)
 
-        if self.__dataset is None:
-            raise ValueError("dataset is not loaded")
-        if start_index >= len(self.__dataset) or end_index > len(self.__dataset):  # Noqa
+        if start_index >= len(data) or end_index > len(data):  # Noqa
             return []
 
         return self.__dataset[start_index:end_index]
