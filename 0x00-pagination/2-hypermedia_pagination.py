@@ -45,9 +45,9 @@ class Server:
             return []
 
         return self.__dataset[start_index:end_index]
-    
+
     def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
-        """function that takes page and page size and returns a 
+        """function that takes page and page size and returns a
             dictionary
         """
         assert isinstance(page, int) and page > 0
@@ -71,7 +71,7 @@ class Server:
             prev_page = page - 1
 
         return {
-            'page_size' : len(data),
+            'page_size': len(data),
             'page': page,
             'data': data,
             'next_page': next_page,
