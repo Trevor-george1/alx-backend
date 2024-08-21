@@ -1,28 +1,28 @@
-#!/usr/bin/env python3
-"""FIFOcache system that uses FIFO rule to replace data stored"""
+
+#!/usr/bin/python3
+"""basic cache system that stores data in a dict"""
 
 BaseCaching = __import__('base_caching').BaseCaching
 
 
 class FIFOCache(BaseCaching):
-    """fifocache class inherits from base caching"""
+    """cache class that inherits from base caching"""
     def __init__(self):
-        """initialization, super()"""
         super().__init__()
 
     def put(self, key, item):
-        """assign to the dictionary"""
+        """must assign to dictionary """
         if key is None or item is None:
             return
-        else: 
-            if len(self.cache_data) >= BaseCaching.MAX_ITEMS and key not in self.cache_data.keys():  # Noqa
-                first_key = next(iter(self.cache_data))
+        else:
+            if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+                first_key = next(iter(self.cache_data.keys()))
                 del self.cache_data[first_key]
                 print("Discard: {}".format(first_key))
             self.cache_data[key] = item
 
     def get(self, key):
-        """return the value of key from dict"""
+        """return the value in dict linked to key"""
         if key is None or key not in self.cache_data.keys():
             return None
         else:
