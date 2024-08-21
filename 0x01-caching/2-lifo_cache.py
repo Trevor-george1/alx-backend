@@ -12,7 +12,7 @@ class LIFOCache(BaseCaching):
     def put(self, key, item):
         """must assign to dictionary """
         if key is None or item is None:
-            return
+            pass
         else:
             if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
                 last_key, last_value = self.cache_data.popitem()
