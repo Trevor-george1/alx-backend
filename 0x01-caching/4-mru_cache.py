@@ -27,7 +27,7 @@ class MRUCache(BaseCaching):
                 print(f"Discard: {discard}")
 
     def get(self, key):
-        """summary"""
+        """get item from dict usng the key"""
         if key is not None and key in self.cache_data.keys():
             self.usedKeys.append(self.usedKeys.pop(self.usedKeys.index(key)))
             return self.cache_data.get(key)
