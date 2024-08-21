@@ -16,7 +16,7 @@ class FIFOCache(BaseCaching):
         else:
             self.cache_data[key] = item
             if len(self.cache_data.keys()) > BaseCaching.MAX_ITEMS:
-                first_key = next(iter(self.cache_data.keys()))
+                first_key = next(iter(self.cache_data))
                 self.cache_data.pop(first_key)
                 print(f"Discard: {first_key}")
             return
