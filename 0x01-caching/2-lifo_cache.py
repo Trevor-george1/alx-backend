@@ -14,7 +14,7 @@ class LIFOCache(BaseCaching):
         if key is None or item is None:
             pass
         else:
-            if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+            if len(self.cache_data) >= BaseCaching.MAX_ITEMS and key not in self.cache_data.keys():  # Noqa
                 last_key, last_value = self.cache_data.popitem()
                 print("Discard: {}".format(last_key))
             self.cache_data[key] = item
