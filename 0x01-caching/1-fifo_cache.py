@@ -16,8 +16,8 @@ class FIFOCache(BaseCaching):
             return
         if len(self.cache_data) >= BaseCaching.MAX_ITEMS and key not in self.cache_data.keys():  # Noqa
             first_key = next(iter(self.cache_data))
-            print("Discard: {}".format(first_key))
             del self.cache_data[first_key]
+            print("Discard: {}".format(first_key))
         self.cache_data[key] = item
 
     def get(self, key):
