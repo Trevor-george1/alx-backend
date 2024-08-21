@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 """basic cache system that stores data in a dict"""
 
@@ -17,7 +16,7 @@ class FIFOCache(BaseCaching):
         else:
             if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
                 first_key = next(iter(self.cache_data.keys()))
-                del self.cache_data[first_key]
+                self.cache_data.pop(first_key)
                 print(f"Discard: {first_key}")
             self.cache_data[key] = item
 
