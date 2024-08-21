@@ -14,11 +14,12 @@ class FIFOCache(BaseCaching):
         if key is None or item is None:
             return
         else:
+            self.cache_data[key] = item
             if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
                 first_key = next(iter(self.cache_data.keys()))
                 self.cache_data.pop(first_key)
                 print(f"Discard: {first_key}")
-            self.cache_data[key] = item
+            return
 
     def get(self, key):
         """return the value in dict linked to key"""
